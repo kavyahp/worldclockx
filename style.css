@@ -52,6 +52,7 @@ body::before {
   max-width: 600px;
   width: 100%;
   text-align: center;
+  margin-bottom: 60px;
 }
 
 h1 {
@@ -189,21 +190,22 @@ h1 {
 
 /* Light theme styles */
 body.light-theme {
-  background: linear-gradient(135deg, #f0f0f0, #ffffff);
-  color: #1a1a1a;
+  background: linear-gradient(135deg, #dcdcdc, #e8e8e8);
+  color: #333333;
 }
 
 body.light-theme::before {
   background-image: radial-gradient(
-    rgba(0, 0, 0, 0.07) 1.5px,
+    rgba(0, 0, 0, 0.08) 1.5px,
     transparent 1.5px
   );
+  background-size: 25px 25px;
 }
 
 .light-theme #countrySearch {
-  background: rgba(255, 255, 255, 0.7);
-  border-color: rgba(0, 0, 0, 0.1);
-  color: #1a1a1a;
+  background: rgba(255, 255, 255, 0.5);
+  border-color: rgba(0, 0, 0, 0.06);
+  color: #333333;
 }
 
 .light-theme #countrySearch:focus {
@@ -212,9 +214,9 @@ body.light-theme::before {
 }
 
 .light-theme #suggestions {
-  background-color: rgba(255, 255, 255, 0.95);
-  border-color: #dddddd;
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+  background-color: rgba(255, 255, 255, 0.75);
+  border-color: #d8d8d8;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.06);
 }
 
 .light-theme .suggestion-item {
@@ -227,9 +229,9 @@ body.light-theme::before {
 }
 
 .light-theme .clock {
-  background: rgba(255, 255, 255, 0.7);
-  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
-  border: 1px solid rgba(0, 0, 0, 0.1);
+  background: rgba(255, 255, 255, 0.5);
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.06);
+  border: 1px solid rgba(0, 0, 0, 0.06);
 }
 
 .light-theme .clock::before {
@@ -239,21 +241,21 @@ body.light-theme::before {
 .light-theme #timezone,
 .light-theme #date,
 .light-theme .loading {
-  color: #666;
+  color: #555;
 }
 
 .light-theme .theme-toggle {
-  background: rgba(224, 224, 224, 0.7);
-  border-color: rgba(0, 0, 0, 0.1);
-  color: #1a1a1a;
+  background: rgba(220, 220, 220, 0.7);
+  border-color: rgba(0, 0, 0, 0.06);
+  color: #333333;
 }
 
 .light-theme .theme-toggle:hover {
-  background-color: #d0d0d0;
+  background-color: #cecece;
 }
 
 .light-theme .search-icon {
-  stroke: #666;
+  stroke: #555;
 }
 
 /* Add some subtle animations */
@@ -278,4 +280,68 @@ body.light-theme::before {
   100% {
     opacity: 1;
   }
+}
+
+.footer {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  padding: 20px;
+  background-color: #1a1a1a;
+  text-align: center;
+  font-family: 'Inter', sans-serif;
+  font-size: 0.9rem;
+  color: #888;
+  box-shadow: 0 -2px 10px rgba(0, 0, 0, 0.2);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 12px;
+}
+
+.footer a {
+  color: #888;
+  text-decoration: none;
+  transition: color 0.3s ease;
+  padding: 0 8px;
+  margin: 0 4px;
+}
+
+.footer a:hover {
+  color: #ffffff;
+}
+
+/* Light theme styles */
+body.light-theme .footer {
+  background-color: #dcdcdc;
+  color: #444;
+  box-shadow: 0 -2px 10px rgba(0, 0, 0, 0.06);
+}
+
+body.light-theme .footer a {
+  color: #444;
+}
+
+body.light-theme .footer a:hover {
+  color: #222;
+}
+
+.github-icon {
+  transition: transform 0.3s ease;
+  vertical-align: middle;
+}
+
+.footer a:hover .github-icon {
+  transform: scale(1.1);
+}
+
+.footer a {
+  display: flex;
+  align-items: center;
+  color: #888;
+  text-decoration: none;
+  transition: color 0.3s ease;
+  padding: 0 8px;
+  margin: 0 4px;
 }
