@@ -85,6 +85,21 @@ const countries = [
   let updateInterval;
   let selectedIndex = -1;
 
+  const themeMap = {
+    'dark': '',
+    'light': 'light-theme',
+    'blue': 'blue-theme'
+  };
+
+  const themeDescriptions = {
+    0: 'Dark Theme - Classic dark mode for night viewing',
+    1: 'Light Theme - Clean and bright interface',
+    2: 'Ocean Theme - Calming blue tones inspired by the sea',
+    3: 'Forest Theme - Natural green hues from the wilderness',
+    4: 'Sunset Theme - Warm gradients of dusk and twilight',
+    5: 'Neon Theme - Vibrant cyberpunk-inspired design'
+  };
+
   function getTimeInTimezone(timezone) {
     try {
       const now = new Date();
@@ -291,26 +306,49 @@ const countries = [
   });
 
   // Theme toggle functionality
-  function toggleTheme() {
-    const body = document.body;
-    const isDark = body.classList.contains('light-theme');
-    body.classList.toggle('light-theme');
-    themeToggle.textContent = isDark ? '🌙' : '☀️';
-
-    // Save theme preference
-    localStorage.setItem('theme', isDark ? 'dark' : 'light');
+  function updateThemeDescription() {
+    const themeDesc = document.getElementById('themeDescription');
+    themeDesc.textContent = themeDescriptions[currentThemeIndex] || '';
   }
 
-  // Load saved theme preference
-  function loadTheme() {
-    const savedTheme = localStorage.getItem('theme');
-    if (savedTheme === 'light') {
-      document.body.classList.add('light-theme');
-      themeToggle.textContent = '☀️';
+  function setTheme(themeName) {
+    // Remove all theme classes
+    Object.values(themeMap).forEach(theme => {
+      if (theme) document.body.classList.remove(theme);
+    });
+    
+    // Apply new theme
+    const themeClass = themeMap[themeName];
+    if (themeClass) {
+      document.body.classList.add(themeClass);
     }
+    
+    // Update active button
+    document.querySelectorAll('.theme-btn').forEach(btn => {
+      btn.classList.remove('active');
+      if (btn.dataset.theme === themeName) {
+        btn.classList.add('active');
+      }
+    });
+    
+    // Save theme preference
+    localStorage.setItem('theme', themeName);
   }
 
-  themeToggle.addEventListener('click', toggleTheme);
+  function loadTheme() {
+    const savedTheme = localStorage.getItem('theme') || 'dark';
+    setTheme(savedTheme);
+  }
+
+  // Initialize theme buttons
+  document.querySelectorAll('.theme-btn').forEach(btn => {
+    btn.addEventListener('click', () => {
+      const themeName = btn.dataset.theme;
+      setTheme(themeName);
+    });
+  });
+
+  // Load saved theme
   loadTheme();
 
   // Initial time update
