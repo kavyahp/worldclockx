@@ -1,0 +1,204 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+/* Add transition properties */
+body,
+#countrySearch,
+#suggestions,
+.suggestion-item,
+.clock,
+#timezone,
+#date,
+.loading,
+.theme-toggle,
+h1,
+#time {
+  transition: all 0.3s ease;
+}
+
+body {
+  background-color: #1a1a1a;
+  color: #ffffff;
+  font-family: 'Inter', sans-serif;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 2rem;
+}
+
+.container {
+  max-width: 600px;
+  width: 100%;
+  text-align: center;
+}
+
+h1 {
+  margin-bottom: 2rem;
+  font-size: 2.5rem;
+}
+
+.search-container {
+  position: relative;
+  margin-bottom: 2rem;
+  width: 100%;
+}
+
+#countrySearch {
+  width: 100%;
+  padding: 12px;
+  padding-right: 40px;
+  background-color: #2d2d2d;
+  border: 1px solid #404040;
+  color: #ffffff;
+  border-radius: 8px;
+  font-size: 1rem;
+  font-family: 'Inter', sans-serif;
+}
+
+.search-icon {
+  position: absolute;
+  right: 12px;
+  top: 50%;
+  transform: translateY(-50%);
+  stroke: #888;
+  pointer-events: none;
+}
+
+#suggestions {
+  position: absolute;
+  width: 100%;
+  max-height: 200px;
+  overflow-y: auto;
+  background-color: #2d2d2d;
+  border: 1px solid #404040;
+  border-radius: 8px;
+  margin-top: 4px;
+  display: none;
+}
+
+.suggestion-item {
+  padding: 10px 12px;
+  cursor: pointer;
+  text-align: left;
+  color: #ffffff;
+}
+
+.suggestion-item:hover {
+  background-color: #404040;
+}
+
+.clock {
+  background-color: #2d2d2d;
+  padding: 2rem;
+  border-radius: 12px;
+  margin-top: 2rem;
+}
+
+#time {
+  font-family: 'Roboto Mono', monospace;
+  font-size: 3.5rem;
+  margin: 1rem 0;
+}
+
+#timezone {
+  color: #888;
+  font-size: 1.2rem;
+}
+
+.suggestion-item.selected {
+  background-color: #404040;
+}
+
+.loading {
+  display: none;
+  margin-top: 0.5rem;
+  color: #888;
+  font-size: 0.9rem;
+}
+
+.loading.active {
+  display: block;
+}
+
+#date {
+  font-family: 'Inter', sans-serif;
+  font-size: 1.2rem;
+  margin-bottom: 1rem;
+  color: #888;
+}
+
+.theme-toggle {
+  position: absolute;
+  top: 2rem;
+  right: 2rem;
+  padding: 10px;
+  border-radius: 50%;
+  width: 40px;
+  height: 40px;
+  border: none;
+  background-color: #404040;
+  color: #ffffff;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.2rem;
+}
+
+.theme-toggle:hover {
+  background-color: #505050;
+}
+
+/* Light theme styles */
+body.light-theme {
+  background-color: #f0f0f0;
+  color: #1a1a1a;
+}
+
+.light-theme #countrySearch {
+  background-color: #ffffff;
+  border-color: #dddddd;
+  color: #1a1a1a;
+}
+
+.light-theme #suggestions {
+  background-color: #ffffff;
+  border-color: #dddddd;
+}
+
+.light-theme .suggestion-item {
+  color: #1a1a1a;
+}
+
+.light-theme .suggestion-item:hover,
+.light-theme .suggestion-item.selected {
+  background-color: #f0f0f0;
+}
+
+.light-theme .clock {
+  background-color: #ffffff;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+}
+
+.light-theme #timezone,
+.light-theme #date,
+.light-theme .loading {
+  color: #666;
+}
+
+.light-theme .theme-toggle {
+  background-color: #e0e0e0;
+  color: #1a1a1a;
+}
+
+.light-theme .theme-toggle:hover {
+  background-color: #d0d0d0;
+}
+
+.light-theme .search-icon {
+  stroke: #666;
+}
