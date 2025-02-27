@@ -81,7 +81,7 @@ const countries = [
   const dateDisplay = document.getElementById('date');
   const themeToggle = document.getElementById('themeToggle');
 
-  let selectedTimezone = 'UTC';
+  let selectedTimezones = new Set();
   let updateInterval;
   let selectedIndex = -1;
 
@@ -192,8 +192,10 @@ const countries = [
   }
 
   function showSuggestions(searchTerm) {
-    const filteredCountries = countries.filter((country) =>
-      country.name.toLowerCase().includes(searchTerm.toLowerCase())
+    const filteredCountries = countries.filter(
+      (country) => 
+        country.name.toLowerCase().includes(searchTerm.toLowerCase()) &&
+        !selectedTimezones.has(country.timezone)
     );
 
     suggestionsContainer.innerHTML = '';
@@ -205,15 +207,10 @@ const countries = [
         div.className = 'suggestion-item';
         div.textContent = country.name;
         div.addEventListener('click', () => {
-          selectedTimezone = country.timezone;
-          countrySearch.value = country.name;
+          addTimezone(country);
+          countrySearch.value = '';
           suggestionsContainer.style.display = 'none';
           selectedIndex = -1;
-
-          showLoading();
-          clearInterval(updateInterval);
-          updateTime();
-          updateInterval = setInterval(updateTime, 1000);
         });
         suggestionsContainer.appendChild(div);
       });
@@ -221,6 +218,61 @@ const countries = [
     } else {
       suggestionsContainer.style.display = 'none';
     }
+  }
+
+  function addTimezone(country) {
+    if (selectedTimezones.has(country.timezone)) return;
+    
+    selectedTimezones.add(country.timezone);
+    const card = createTimezoneCard(country);
+    document.getElementById('selectedTimezones').appendChild(card);
+    updateAllTimes();
+  }
+
+  function createTimezoneCard(country) {
+    const card = document.createElement('div');
+    card.className = 'timezone-card';
+    card.innerHTML = `
+      <button class="remove-btn" onclick="removeTimezone('${country.timezone}')">×</button>
+      <div class="country-name">${country.name}</div>
+      <div class="time" data-timezone="${country.timezone}">--:--:--</div>
+      <div class="date" data-timezone="${country.timezone}">--</div>
+      <div class="timezone">${country.timezone}</div>
+    `;
+    return card;
+  }
+
+  function removeTimezone(timezone) {
+    selectedTimezones.delete(timezone);
+    updateTimezoneGrid();
+  }
+
+  function updateTimezoneGrid() {
+    const grid = document.getElementById('selectedTimezones');
+    grid.innerHTML = '';
+    
+    selectedTimezones.forEach(timezone => {
+      const country = countries.find(c => c.timezone === timezone);
+      if (country) {
+        const card = createTimezoneCard(country);
+        grid.appendChild(card);
+      }
+    });
+    updateAllTimes();
+  }
+
+  function updateAllTimes() {
+    selectedTimezones.forEach(timezone => {
+      const timeData = getTimeInTimezone(timezone);
+      if (timeData.success) {
+        const timeElement = document.querySelector(`.time[data-timezone="${timezone}"]`);
+        const dateElement = document.querySelector(`.date[data-timezone="${timezone}"]`);
+        if (timeElement && dateElement) {
+          timeElement.textContent = timeData.time;
+          dateElement.textContent = timeData.date;
+        }
+      }
+    });
   }
 
   countrySearch.addEventListener('input', (e) => {
@@ -263,4 +315,5 @@ const countries = [
 
   // Initial time update
   updateTime();
-  updateInterval = setInterval(updateTime, 1000);
+  clearInterval(updateInterval);
+  updateInterval = setInterval(updateAllTimes, 1000);
