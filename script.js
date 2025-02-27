@@ -107,12 +107,9 @@ const countries = [
       const formatter = new Intl.DateTimeFormat('en-US', timeOptions);
       const dateFormatter = new Intl.DateTimeFormat('en-US', dateOptions);
 
-      const timeString = formatter.format(now);
-      const dateString = dateFormatter.format(now);
-
       return {
-        time: timeString,
-        date: dateString,
+        time: formatter.format(now),
+        date: dateFormatter.format(now),
         timezone: timezone,
         success: true,
       };
