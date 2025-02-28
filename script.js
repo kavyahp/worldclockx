@@ -95,11 +95,8 @@ const countries = [
   const themeDescriptions = {
     0: 'Dark Theme - Classic dark mode for night viewing',
     1: 'Light Theme - Clean and bright interface',
-    2: 'Ocean Theme - Calming blue tones inspired by the sea',
-    3: 'Amber Theme - Warm and cozy atmosphere with golden hues',
-    4: 'Forest Theme - Natural green hues from the wilderness',
-    5: 'Sunset Theme - Warm gradients of dusk and twilight',
-    6: 'Neon Theme - Vibrant cyberpunk-inspired design'
+    2: 'Blue Theme - Calming blue tones inspired by the sea',
+    3: 'Amber Theme - Warm and cozy atmosphere with golden hues'
   };
 
   function getTimeInTimezone(timezone) {
@@ -331,7 +328,14 @@ const countries = [
       <div class="time" data-timezone="${country.timezone}">--:--:--</div>
       <div class="date" data-timezone="${country.timezone}">--</div>
       <div class="timezone">${country.timezone}</div>
+      <div class="weather-container">
+        <div class="weather-loading">Loading weather...</div>
+      </div>
     `;
+
+    // Update weather data for this card
+    WeatherService.updateWeatherForCard(card, country.timezone);
+    
     return card;
   }
 
@@ -434,14 +438,28 @@ const countries = [
     });
   });
 
-  // Initialize the page
+  // Add weather update interval
+  let weatherUpdateInterval;
+
+  // Modify the document.addEventListener('DOMContentLoaded') to include weather updates
   document.addEventListener('DOMContentLoaded', () => {
     loadSavedTimezones();
     addClearButton();
     loadTheme();
     updateAllTimes();
+    
+    // Clear existing intervals
     clearInterval(updateInterval);
+    clearInterval(weatherUpdateInterval);
+    
+    // Set new intervals
     updateInterval = setInterval(updateAllTimes, 1000);
+    weatherUpdateInterval = setInterval(() => {
+      selectedTimezones.forEach(timezone => {
+        const card = document.querySelector(`.timezone-card .timezone:contains('${timezone}')`).closest('.timezone-card');
+        WeatherService.updateWeatherForCard(card, timezone);
+      });
+    }, 600000); // Update weather every 10 minutes
   });
 
   // Update the styles
