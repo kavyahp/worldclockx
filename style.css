@@ -374,14 +374,14 @@ body.blue-theme::before {
 }
 
 .blue-theme #countrySearch {
-  background-color: rgba(255, 255, 255, 0.15);
-  border-color: rgba(255, 255, 255, 0.3);
+  background-color: rgba(43, 124, 176, 0.3);
+  border-color: rgba(255, 255, 255, 0.2);
   color: #ffffff;
 }
 
 .blue-theme #countrySearch:hover {
-  background-color: rgba(255, 255, 255, 0.2);
-  border-color: rgba(255, 255, 255, 0.4);
+  background-color: rgba(43, 124, 176, 0.4);
+  border-color: rgba(255, 255, 255, 0.3);
 }
 
 .blue-theme #countrySearch:focus {
@@ -419,6 +419,123 @@ body.blue-theme::before {
 
 .blue-theme .timezone-card .time {
   text-shadow: 0 0 10px rgba(135, 206, 235, 0.5);
+}
+
+/* Amber theme */
+body.amber-theme {
+  background: linear-gradient(
+    135deg,
+    rgba(230, 126, 34, 0.8),
+    rgba(211, 84, 0, 0.8)
+  );
+  color: rgba(255, 255, 255, 0.95);
+}
+
+body.amber-theme::before {
+  background-image: radial-gradient(
+    rgba(255, 255, 255, 0.05) 1.5px,
+    transparent 1.5px
+  );
+}
+
+.amber-theme #countrySearch {
+  background-color: rgba(153, 61, 0, 0.3);
+  border-color: rgba(255, 255, 255, 0.2);
+  color: rgba(255, 255, 255, 0.95);
+}
+
+.amber-theme #countrySearch::placeholder {
+  color: rgba(255, 255, 255, 0.6);
+}
+
+.amber-theme #countrySearch:hover {
+  background-color: rgba(153, 61, 0, 0.4);
+  border-color: rgba(255, 255, 255, 0.3);
+}
+
+.amber-theme #countrySearch:focus {
+  background-color: rgba(153, 61, 0, 0.5);
+  border-color: rgba(255, 255, 255, 0.4);
+  box-shadow: 0 0 0 2px rgba(211, 84, 0, 0.2);
+}
+
+.amber-theme .search-icon {
+  stroke: rgba(255, 255, 255, 0.8);
+}
+
+.amber-theme #suggestions {
+  background-color: rgba(153, 61, 0, 0.35);
+  border-color: rgba(255, 255, 255, 0.15);
+}
+
+.amber-theme .suggestion-item {
+  color: rgba(255, 255, 255, 0.95);
+}
+
+.amber-theme .suggestion-item:hover,
+.amber-theme .suggestion-item.selected {
+  background-color: rgba(211, 84, 0, 0.4);
+}
+
+.amber-theme .clock,
+.amber-theme .timezone-card {
+  background: rgba(153, 61, 0, 0.3);
+  border-color: rgba(255, 255, 255, 0.15);
+  box-shadow: 0 8px 32px rgba(211, 84, 0, 0.2);
+}
+
+.amber-theme #time,
+.amber-theme .timezone-card .time {
+  text-shadow: 0 0 10px rgba(211, 84, 0, 0.3);
+}
+
+.amber-theme #timezone,
+.amber-theme #date,
+.amber-theme .timezone-card .date,
+.amber-theme .timezone-card .timezone {
+  color: rgba(255, 255, 255, 0.8);
+}
+
+.amber-theme .footer {
+  background-color: rgba(211, 84, 0, 0.7);
+  color: rgba(255, 255, 255, 0.9);
+}
+
+.amber-theme .description {
+  color: rgba(255, 255, 255, 0.9);
+}
+
+.amber-theme .theme-switcher {
+  background: rgba(153, 61, 0, 0.25);
+  border-color: rgba(255, 255, 255, 0.15);
+}
+
+.amber-theme .theme-btn {
+  background: rgba(153, 61, 0, 0.3);
+  border-color: rgba(255, 255, 255, 0.15);
+}
+
+.amber-theme .theme-btn:hover {
+  background: rgba(153, 61, 0, 0.4);
+  box-shadow: 0 0 15px rgba(211, 84, 0, 0.3);
+}
+
+.amber-theme .theme-btn.active {
+  background: rgba(211, 84, 0, 0.4);
+  box-shadow: 0 0 20px rgba(211, 84, 0, 0.4);
+}
+
+.amber-theme .weather-container {
+  border-top-color: rgba(255, 255, 255, 0.15);
+}
+
+.amber-theme .weather-loading,
+.amber-theme .weather-desc {
+  color: rgba(255, 255, 255, 0.8);
+}
+
+.amber-theme .weather-icon {
+  filter: brightness(1.2);
 }
 
 /* Common theme button styles */
@@ -500,24 +617,6 @@ body.blue-theme::before {
 
 .ocean-theme .description {
   color: #b8e3ff;
-}
-
-/* Forest theme footer */
-.forest-theme .footer {
-  background-color: rgba(26, 71, 42, 0.9);
-  color: #a5d8a7;
-}
-
-.forest-theme .footer a {
-  color: #a5d8a7;
-}
-
-.forest-theme .footer a:hover {
-  color: #ffffff;
-}
-
-.forest-theme .description {
-  color: #a5d8a7;
 }
 
 /* Sunset theme footer */
@@ -675,356 +774,79 @@ body.blue-theme::before {
   transform: translateX(0);
 }
 
-/* Ocean Theme */
-body.ocean-theme {
-  background: linear-gradient(135deg, #1a4b6e, #2b7cb0);
-  color: #ffffff;
-}
-
-body.ocean-theme::before {
-  background-image: radial-gradient(
-    rgba(255, 255, 255, 0.15) 1.5px,
-    transparent 1.5px
-  );
-}
-
-.ocean-theme #countrySearch {
-  background-color: rgba(43, 124, 176, 0.3);
-  border-color: rgba(255, 255, 255, 0.2);
-  color: #ffffff;
-}
-
-.ocean-theme #countrySearch:hover {
-  background-color: rgba(43, 124, 176, 0.4);
-  border-color: rgba(255, 255, 255, 0.3);
-}
-
-.ocean-theme .clock,
-.ocean-theme .timezone-card {
-  background: rgba(43, 124, 176, 0.25);
-  border-color: rgba(255, 255, 255, 0.2);
-  box-shadow: 0 8px 32px rgba(26, 75, 110, 0.3);
-}
-
-.ocean-theme #time,
-.ocean-theme .timezone-card .time {
-  text-shadow: 0 0 10px rgba(135, 206, 235, 0.5);
-}
-
-/* Forest Theme */
-body.forest-theme {
-  background: linear-gradient(135deg, #1a472a, #2d5a27);
-  color: #ffffff;
-}
-
-body.forest-theme::before {
-  background-image: radial-gradient(
-    rgba(255, 255, 255, 0.12) 1.5px,
-    transparent 1.5px
-  );
-}
-
-.forest-theme #countrySearch {
-  background-color: rgba(45, 90, 39, 0.3);
-  border-color: rgba(255, 255, 255, 0.2);
-  color: #ffffff;
-}
-
-.forest-theme #countrySearch:hover {
-  background-color: rgba(45, 90, 39, 0.4);
-  border-color: rgba(255, 255, 255, 0.3);
-}
-
-.forest-theme .clock,
-.forest-theme .timezone-card {
-  background: rgba(45, 90, 39, 0.25);
-  border-color: rgba(255, 255, 255, 0.2);
-  box-shadow: 0 8px 32px rgba(26, 71, 42, 0.3);
-}
-
-.forest-theme #time,
-.forest-theme .timezone-card .time {
-  text-shadow: 0 0 10px rgba(144, 238, 144, 0.5);
-}
-
-/* Sunset Theme */
-body.sunset-theme {
-  background: linear-gradient(135deg, #ff6b6b, #6b4984);
-  color: #ffffff;
-}
-
-body.sunset-theme::before {
-  background-image: radial-gradient(
-    rgba(255, 255, 255, 0.12) 1.5px,
-    transparent 1.5px
-  );
-}
-
-.sunset-theme #countrySearch {
-  background-color: rgba(107, 73, 132, 0.3);
-  border-color: rgba(255, 255, 255, 0.2);
-  color: #ffffff;
-}
-
-.sunset-theme #countrySearch:hover {
-  background-color: rgba(107, 73, 132, 0.4);
-  border-color: rgba(255, 255, 255, 0.3);
-}
-
-.sunset-theme .clock,
-.sunset-theme .timezone-card {
-  background: rgba(107, 73, 132, 0.25);
-  border-color: rgba(255, 255, 255, 0.2);
-  box-shadow: 0 8px 32px rgba(255, 107, 107, 0.3);
-}
-
-.sunset-theme #time,
-.sunset-theme .timezone-card .time {
-  text-shadow: 0 0 10px rgba(255, 182, 193, 0.5);
-}
-
-/* Neon Theme */
-body.neon-theme {
-  background: linear-gradient(135deg, #0c0c2c, #1a1a3a);
-  color: #00ff9d;
-}
-
-body.neon-theme::before {
-  background-image: radial-gradient(
-    rgba(0, 255, 157, 0.15) 1.5px,
-    transparent 1.5px
-  );
-}
-
-.neon-theme #countrySearch {
-  background-color: rgba(26, 26, 58, 0.6);
-  border-color: #00ff9d;
-  color: #00ff9d;
-  box-shadow: 0 0 10px rgba(0, 255, 157, 0.3);
-}
-
-.neon-theme #countrySearch:hover {
-  background-color: rgba(26, 26, 58, 0.8);
-  border-color: #00ff9d;
-  box-shadow: 0 0 15px rgba(0, 255, 157, 0.4);
-}
-
-.neon-theme .clock,
-.neon-theme .timezone-card {
-  background: rgba(26, 26, 58, 0.6);
-  border-color: #00ff9d;
-  box-shadow: 0 0 20px rgba(0, 255, 157, 0.3);
-}
-
-.neon-theme #time,
-.neon-theme .timezone-card .time {
-  color: #00ff9d;
-  text-shadow: 0 0 20px rgba(0, 255, 157, 0.8);
-}
-
-.neon-theme #timezone,
-.neon-theme #date,
-.neon-theme .timezone-card .date,
-.neon-theme .timezone-card .timezone {
-  color: #00ffff;
-  text-shadow: 0 0 10px rgba(0, 255, 255, 0.5);
-}
-
-.theme-switcher {
-  position: fixed;
-  top: 2rem;
-  right: 2rem;
-  display: flex;
-  gap: 0.5rem;
-  padding: 8px;
-  background: rgba(45, 45, 45, 0.7);
-  backdrop-filter: blur(10px);
-  border-radius: 50px;
-  border: 1px solid rgba(255, 255, 255, 0.1);
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
-  z-index: 1000;
-}
-
-.theme-btn {
-  width: 40px;
-  height: 40px;
-  border-radius: 50%;
-  border: 1px solid rgba(255, 255, 255, 0.1);
-  background: rgba(64, 64, 64, 0.7);
-  color: #ffffff;
-  cursor: pointer;
-  font-size: 1.2rem;
+/* Weather-related styles */
+.weather-container {
+  margin-top: 1.5rem;
+  padding-top: 1rem;
   display: flex;
   align-items: center;
   justify-content: center;
-  transition: all 0.3s ease;
-  padding: 0;
+  gap: 0.75rem;
+  padding: 1rem;
+  border-top: 1px solid rgba(255, 255, 255, 0.1);
 }
 
-.theme-btn:hover {
-  transform: scale(1.1);
-  background: rgba(80, 80, 80, 0.8);
+.weather-loading {
+  color: #888;
+  font-size: 0.9rem;
+  margin-top: 0.5rem;
 }
 
-.theme-btn.active {
-  background: rgba(255, 255, 255, 0.2);
-  border-color: rgba(255, 255, 255, 0.3);
-  transform: scale(1.1);
+.weather-icon {
+  width: 32px;
+  height: 32px;
+  filter: brightness(1.2);
+  object-fit: contain;
 }
 
-/* Light theme adjustments */
-.light-theme .theme-switcher {
-  background: rgba(255, 255, 255, 0.7);
-  border-color: rgba(0, 0, 0, 0.1);
+.weather-temp {
+  font-family: 'Roboto Mono', monospace;
+  font-size: 1.2rem;
+  margin-right: 0.5rem;
 }
 
-.light-theme .theme-btn {
-  background: rgba(220, 220, 220, 0.7);
-  border-color: rgba(0, 0, 0, 0.1);
+.weather-desc {
+  color: #888;
+  font-size: 0.9rem;
+  text-transform: capitalize;
 }
 
-.light-theme .theme-btn:hover {
-  background: rgba(200, 200, 200, 0.8);
+/* Theme-specific weather styles */
+.light-theme .weather-container {
+  border-top-color: rgba(0, 0, 0, 0.1);
 }
 
-.light-theme .theme-btn.active {
-  background: rgba(0, 0, 0, 0.1);
-  border-color: rgba(0, 0, 0, 0.2);
+.light-theme .weather-loading,
+.light-theme .weather-desc {
+  color: #666;
 }
 
-/* Ocean theme adjustments */
-.ocean-theme .theme-switcher {
-  background: rgba(43, 124, 176, 0.3);
+.blue-theme .weather-container {
+  border-top-color: rgba(255, 255, 255, 0.2);
 }
 
-/* Forest theme adjustments */
-.forest-theme .theme-switcher {
-  background: rgba(45, 90, 39, 0.3);
+.blue-theme .weather-loading,
+.blue-theme .weather-desc {
+  color: #b8e3ff;
 }
 
-/* Sunset theme adjustments */
-.sunset-theme .theme-switcher {
-  background: rgba(107, 73, 132, 0.3);
+.amber-theme .weather-container {
+  border-top-color: rgba(255, 255, 255, 0.2);
 }
 
-/* Neon theme adjustments */
-.neon-theme .theme-switcher {
-  background: rgba(26, 26, 58, 0.6);
-  border-color: #00ff9d;
+.amber-theme .weather-loading,
+.amber-theme .weather-desc {
+  color: rgba(255, 255, 255, 0.8);
 }
 
-.neon-theme .theme-btn {
-  background: rgba(26, 26, 58, 0.8);
-  border-color: #00ff9d;
-  color: #00ff9d;
+.amber-theme .weather-icon {
+  filter: brightness(1.5);
 }
 
-.neon-theme .theme-btn:hover {
-  background: rgba(26, 26, 58, 1);
-  box-shadow: 0 0 15px rgba(0, 255, 157, 0.4);
+.amber-theme .timezone-card .remove-btn {
+  color: rgba(255, 255, 255, 0.8);
 }
 
-.neon-theme .theme-btn.active {
-  background: rgba(0, 255, 157, 0.2);
-  box-shadow: 0 0 20px rgba(0, 255, 157, 0.5);
-}
-
-/* Amber Theme */
-body.amber-theme {
-  background: linear-gradient(135deg, #e67e22, #d35400);
-  color: #ffffff;
-}
-
-body.amber-theme::before {
-  background-image: radial-gradient(
-    rgba(255, 255, 255, 0.08) 1.5px,
-    transparent 1.5px
-  );
-}
-
-.amber-theme #countrySearch {
-  background-color: rgba(0, 0, 0, 0.2);
-  border-color: rgba(255, 255, 255, 0.3);
-  color: #ffffff;
-}
-
-.amber-theme #countrySearch::placeholder {
-  color: rgba(255, 255, 255, 0.7);
-}
-
-.amber-theme #countrySearch:hover {
-  background-color: rgba(0, 0, 0, 0.25);
-  border-color: rgba(255, 255, 255, 0.4);
-}
-
-.amber-theme #countrySearch:focus {
-  background-color: rgba(0, 0, 0, 0.3);
-  border-color: rgba(255, 255, 255, 0.5);
-  box-shadow: 0 0 0 2px rgba(211, 84, 0, 0.3);
-}
-
-.amber-theme .clock,
-.amber-theme .timezone-card {
-  background: rgba(0, 0, 0, 0.2);
-  border-color: rgba(255, 255, 255, 0.2);
-  box-shadow: 0 8px 32px rgba(211, 84, 0, 0.3);
-}
-
-.amber-theme #time,
-.amber-theme .timezone-card .time {
-  text-shadow: 0 0 10px rgba(211, 84, 0, 0.5);
-}
-
-.amber-theme #timezone,
-.amber-theme #date,
-.amber-theme .timezone-card .date,
-.amber-theme .timezone-card .timezone {
-  color: rgba(255, 255, 255, 0.9);
-}
-
-.amber-theme .footer {
-  background-color: rgba(211, 84, 0, 0.9);
-  color: rgba(255, 255, 255, 0.95);
-}
-
-.amber-theme .description {
-  color: rgba(255, 255, 255, 0.95);
-}
-
-.amber-theme .theme-switcher {
-  background: rgba(0, 0, 0, 0.2);
-  border-color: rgba(255, 255, 255, 0.2);
-}
-
-.amber-theme .theme-btn {
-  background: rgba(0, 0, 0, 0.25);
-  border-color: rgba(255, 255, 255, 0.2);
-}
-
-.amber-theme .theme-btn:hover {
-  background: rgba(0, 0, 0, 0.3);
-  box-shadow: 0 0 15px rgba(211, 84, 0, 0.4);
-}
-
-.amber-theme .theme-btn.active {
-  background: rgba(211, 84, 0, 0.4);
-  box-shadow: 0 0 20px rgba(211, 84, 0, 0.5);
-}
-
-.amber-theme .search-icon {
-  stroke: rgba(255, 255, 255, 0.9);
-}
-
-.amber-theme #suggestions {
-  background-color: rgba(0, 0, 0, 0.25);
-  border-color: rgba(255, 255, 255, 0.2);
-}
-
-.amber-theme .suggestion-item {
-  color: #ffffff;
-}
-
-.amber-theme .suggestion-item:hover,
-.amber-theme .suggestion-item.selected {
-  background-color: rgba(211, 84, 0, 0.4);
+.amber-theme .timezone-card .remove-btn:hover {
+  color: rgba(255, 255, 255, 1);
 }
