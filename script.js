@@ -237,12 +237,88 @@ const countries = [
     }
   }
 
-  function addTimezone(country) {
+  // Load saved timezones from localStorage
+  function loadSavedTimezones() {
+    try {
+      const savedTimezones = JSON.parse(localStorage.getItem('selectedTimezones')) || [];
+      savedTimezones.forEach(timezone => {
+        const country = countries.find(c => c.timezone === timezone);
+        if (country) {
+          addTimezone(country, false); // false means don't save to localStorage again
+        }
+      });
+    } catch (error) {
+      console.error('Error loading saved timezones:', error);
+    }
+  }
+
+  // Save current timezones to localStorage
+  function saveTimezones() {
+    try {
+      localStorage.setItem('selectedTimezones', JSON.stringify(Array.from(selectedTimezones)));
+    } catch (error) {
+      console.error('Error saving timezones:', error);
+    }
+  }
+
+  // Clear all selected timezones
+  function clearAllTimezones() {
+    selectedTimezones.clear();
+    document.getElementById('selectedTimezones').innerHTML = '';
+    localStorage.removeItem('selectedTimezones');
+    
+    // Hide the clear button
+    const buttonWrapper = document.querySelector('.clear-button-wrapper');
+    if (buttonWrapper) {
+      buttonWrapper.style.display = 'none';
+    }
+  }
+
+  // Add clear button to the interface
+  function addClearButton() {
+    // Remove existing button if it exists
+    const existingWrapper = document.querySelector('.clear-button-wrapper');
+    if (existingWrapper) {
+      existingWrapper.remove();
+    }
+
+    const container = document.getElementById('selectedTimezones');
+    const clearBtn = document.createElement('button');
+    clearBtn.className = 'clear-timezones-btn';
+    clearBtn.textContent = '🗑️ Clear All';
+    clearBtn.onclick = () => {
+      if (confirm('Are you sure you want to clear all selected timezones?')) {
+        clearAllTimezones();
+      }
+    };
+    
+    // Create a wrapper div for the button
+    const buttonWrapper = document.createElement('div');
+    buttonWrapper.className = 'clear-button-wrapper';
+    buttonWrapper.style.display = selectedTimezones.size > 0 ? 'flex' : 'none';
+    buttonWrapper.appendChild(clearBtn);
+    container.parentNode.insertBefore(buttonWrapper, container.nextSibling);
+  }
+
+  function addTimezone(country, shouldSave = true) {
     if (selectedTimezones.has(country.timezone)) return;
     
     selectedTimezones.add(country.timezone);
     const card = createTimezoneCard(country);
     document.getElementById('selectedTimezones').appendChild(card);
+    
+    // Update clear button visibility
+    const buttonWrapper = document.querySelector('.clear-button-wrapper');
+    if (!buttonWrapper) {
+      addClearButton();
+    } else {
+      buttonWrapper.style.display = 'flex';
+    }
+    
+    if (shouldSave) {
+      saveTimezones();
+    }
+    
     updateAllTimes();
   }
 
@@ -262,6 +338,7 @@ const countries = [
   function removeTimezone(timezone) {
     selectedTimezones.delete(timezone);
     updateTimezoneGrid();
+    saveTimezones();
   }
 
   function updateTimezoneGrid() {
@@ -275,6 +352,13 @@ const countries = [
         grid.appendChild(card);
       }
     });
+
+    // Update clear button visibility
+    const buttonWrapper = document.querySelector('.clear-button-wrapper');
+    if (buttonWrapper) {
+      buttonWrapper.style.display = selectedTimezones.size > 0 ? 'flex' : 'none';
+    }
+
     updateAllTimes();
   }
 
@@ -350,10 +434,86 @@ const countries = [
     });
   });
 
-  // Load saved theme
-  loadTheme();
+  // Initialize the page
+  document.addEventListener('DOMContentLoaded', () => {
+    loadSavedTimezones();
+    addClearButton();
+    loadTheme();
+    updateAllTimes();
+    clearInterval(updateInterval);
+    updateInterval = setInterval(updateAllTimes, 1000);
+  });
 
-  // Initial time update
-  updateTime();
-  clearInterval(updateInterval);
-  updateInterval = setInterval(updateAllTimes, 1000);
+  // Update the styles
+  const style = document.createElement('style');
+  style.textContent = `
+    .search-container {
+      position: relative;
+      margin-bottom: 2rem;
+      width: 100%;
+    }
+
+    .search-icon {
+      position: absolute;
+      left: 12px;
+      top: 50%;
+      transform: translateY(-50%);
+      stroke: #888;
+      pointer-events: none;
+      z-index: 1;
+    }
+
+    #countrySearch {
+      padding-left: 40px !important;
+    }
+
+    .clear-button-wrapper {
+      display: flex;
+      justify-content: center;
+      margin: 2rem 0;
+    }
+
+    .clear-timezones-btn {
+      padding: 10px 20px;
+      border-radius: 8px;
+      border: 1px solid rgba(255, 255, 255, 0.2);
+      background: rgba(255, 0, 0, 0.1);
+      color: #ff4444;
+      cursor: pointer;
+      font-family: 'Inter', sans-serif;
+      transition: all 0.3s ease;
+      font-size: 0.9rem;
+    }
+
+    .clear-timezones-btn:hover {
+      background: rgba(255, 0, 0, 0.2);
+      border-color: rgba(255, 255, 255, 0.3);
+      transform: translateY(-1px);
+    }
+
+    .light-theme .clear-timezones-btn {
+      background: rgba(255, 0, 0, 0.05);
+      border-color: rgba(255, 0, 0, 0.2);
+    }
+
+    .light-theme .clear-timezones-btn:hover {
+      background: rgba(255, 0, 0, 0.1);
+    }
+
+    .blue-theme .clear-timezones-btn {
+      background: rgba(255, 0, 0, 0.1);
+      color: #ff6b6b;
+    }
+
+    .amber-theme .clear-timezones-btn {
+      background: rgba(0, 0, 0, 0.2);
+      color: #ffffff;
+      border-color: rgba(255, 255, 255, 0.3);
+    }
+
+    .amber-theme .clear-timezones-btn:hover {
+      background: rgba(0, 0, 0, 0.3);
+      border-color: rgba(255, 255, 255, 0.4);
+    }
+  `;
+  document.head.appendChild(style);
