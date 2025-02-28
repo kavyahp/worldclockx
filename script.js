@@ -88,16 +88,18 @@ const countries = [
   const themeMap = {
     'dark': '',
     'light': 'light-theme',
-    'blue': 'blue-theme'
+    'blue': 'blue-theme',
+    'amber': 'amber-theme'
   };
 
   const themeDescriptions = {
     0: 'Dark Theme - Classic dark mode for night viewing',
     1: 'Light Theme - Clean and bright interface',
     2: 'Ocean Theme - Calming blue tones inspired by the sea',
-    3: 'Forest Theme - Natural green hues from the wilderness',
-    4: 'Sunset Theme - Warm gradients of dusk and twilight',
-    5: 'Neon Theme - Vibrant cyberpunk-inspired design'
+    3: 'Amber Theme - Warm and cozy atmosphere with golden hues',
+    4: 'Forest Theme - Natural green hues from the wilderness',
+    5: 'Sunset Theme - Warm gradients of dusk and twilight',
+    6: 'Neon Theme - Vibrant cyberpunk-inspired design'
   };
 
   function getTimeInTimezone(timezone) {

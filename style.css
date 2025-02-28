@@ -927,3 +927,103 @@ body.neon-theme::before {
   background: rgba(0, 255, 157, 0.2);
   box-shadow: 0 0 20px rgba(0, 255, 157, 0.5);
 }
+
+/* Amber Theme */
+body.amber-theme {
+  background: linear-gradient(135deg, #e67e22, #d35400);
+  color: #ffffff;
+}
+
+body.amber-theme::before {
+  background-image: radial-gradient(
+    rgba(255, 255, 255, 0.08) 1.5px,
+    transparent 1.5px
+  );
+}
+
+.amber-theme #countrySearch {
+  background-color: rgba(0, 0, 0, 0.2);
+  border-color: rgba(255, 255, 255, 0.3);
+  color: #ffffff;
+}
+
+.amber-theme #countrySearch::placeholder {
+  color: rgba(255, 255, 255, 0.7);
+}
+
+.amber-theme #countrySearch:hover {
+  background-color: rgba(0, 0, 0, 0.25);
+  border-color: rgba(255, 255, 255, 0.4);
+}
+
+.amber-theme #countrySearch:focus {
+  background-color: rgba(0, 0, 0, 0.3);
+  border-color: rgba(255, 255, 255, 0.5);
+  box-shadow: 0 0 0 2px rgba(211, 84, 0, 0.3);
+}
+
+.amber-theme .clock,
+.amber-theme .timezone-card {
+  background: rgba(0, 0, 0, 0.2);
+  border-color: rgba(255, 255, 255, 0.2);
+  box-shadow: 0 8px 32px rgba(211, 84, 0, 0.3);
+}
+
+.amber-theme #time,
+.amber-theme .timezone-card .time {
+  text-shadow: 0 0 10px rgba(211, 84, 0, 0.5);
+}
+
+.amber-theme #timezone,
+.amber-theme #date,
+.amber-theme .timezone-card .date,
+.amber-theme .timezone-card .timezone {
+  color: rgba(255, 255, 255, 0.9);
+}
+
+.amber-theme .footer {
+  background-color: rgba(211, 84, 0, 0.9);
+  color: rgba(255, 255, 255, 0.95);
+}
+
+.amber-theme .description {
+  color: rgba(255, 255, 255, 0.95);
+}
+
+.amber-theme .theme-switcher {
+  background: rgba(0, 0, 0, 0.2);
+  border-color: rgba(255, 255, 255, 0.2);
+}
+
+.amber-theme .theme-btn {
+  background: rgba(0, 0, 0, 0.25);
+  border-color: rgba(255, 255, 255, 0.2);
+}
+
+.amber-theme .theme-btn:hover {
+  background: rgba(0, 0, 0, 0.3);
+  box-shadow: 0 0 15px rgba(211, 84, 0, 0.4);
+}
+
+.amber-theme .theme-btn.active {
+  background: rgba(211, 84, 0, 0.4);
+  box-shadow: 0 0 20px rgba(211, 84, 0, 0.5);
+}
+
+.amber-theme .search-icon {
+  stroke: rgba(255, 255, 255, 0.9);
+}
+
+.amber-theme #suggestions {
+  background-color: rgba(0, 0, 0, 0.25);
+  border-color: rgba(255, 255, 255, 0.2);
+}
+
+.amber-theme .suggestion-item {
+  color: #ffffff;
+}
+
+.amber-theme .suggestion-item:hover,
+.amber-theme .suggestion-item.selected {
+  background-color: rgba(211, 84, 0, 0.4);
+}
